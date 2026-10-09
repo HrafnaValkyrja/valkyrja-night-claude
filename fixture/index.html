@@ -1,0 +1,107 @@
+<!doctype html>
+<!-- FIXTURE, not claude.ai. claude.ai's own public CSS bundle (vendor/, fetched logged-out by tools/grab-css.mjs,
+     not committed) + a hand-built DOM using that bundle's real utility classes and --cds-* tokens.
+     Approximates the logged-in surfaces so the theme can be screenshotted without a logged-in account. -->
+<html lang="en-US" class="cds-root h-screen antialiased" data-theme="claude" data-mode="dark" data-color-version="v2"
+      style="--font-user-message: var(--font-sans-serif); --font-claude-response: var(--font-serif);">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>claude.ai fixture</title>
+<link rel="stylesheet" href="vendor/claude-0.css">
+<link rel="stylesheet" href="vendor/claude-1.css">
+<link rel="stylesheet" href="vendor/claude-inline.css">
+<style>
+  /* fixture layout only (no colours here: colours must come from claude.ai's tokens or the theme) */
+  .fx { display:grid; grid-template-columns: 260px 1fr 420px; height:100vh; }
+  .fx-side { overflow:hidden; } .fx-main { display:flex; flex-direction:column; min-width:0; overflow:hidden; }
+  .fx-chat { flex:1; overflow:auto; padding:24px 32px; max-width:760px; width:100%; margin:0 auto; }
+  .fx-art { overflow:auto; }
+  .fx-modal { position:fixed; inset:0; display:none; place-items:center; }
+  [data-show-modal] .fx-modal { display:grid; }
+  @media (max-width: 700px) { .fx { grid-template-columns: 1fr; } .fx-side, .fx-art { display:none; } .fx-chat { padding:16px; } }
+  pre { margin:0; overflow:auto; } .fx-label { position:fixed; right:8px; bottom:6px; font:11px monospace; opacity:.6; pointer-events:none; z-index:99; }
+</style>
+</head>
+<body class="bg-bg-100 text-text-100 font-ui">
+<div class="fx">
+  <nav class="fx-side bg-bg-200 border-r border-border-300 flex flex-col gap-1 p-3" aria-label="Sidebar">
+    <div class="font-display text-lg text-text-000 px-2 py-2">Claude</div>
+    <button class="bg-fill-brand text-on-primary rounded-lg px-3 py-2 text-sm text-left">+ New chat</button>
+    <a class="text-text-300 px-2 py-1 text-sm">Projects</a>
+    <a class="text-text-300 px-2 py-1 text-sm">Artifacts</a>
+    <a class="text-text-300 px-2 py-1 text-sm">Code</a>
+    <div class="text-text-500 text-xs px-2 pt-4 pb-1">Recents</div>
+    <a class="bg-bg-300 text-text-100 rounded-md px-2 py-1 text-sm">Theme polish</a>
+    <a class="text-text-200 rounded-md px-2 py-1 text-sm">Orbital mechanics notes</a>
+    <a class="text-text-200 rounded-md px-2 py-1 text-sm">Garden planning</a>
+    <a class="text-text-200 rounded-md px-2 py-1 text-sm">LED ring firmware</a>
+    <div class="mt-auto flex items-center gap-2 px-2 py-2 border-t border-border-300">
+      <span class="bg-surface-2 text-text-100 rounded-full w-7 h-7 grid place-items-center text-xs">V</span>
+      <span class="text-text-200 text-sm">Max plan</span>
+    </div>
+  </nav>
+
+  <main class="fx-main bg-page">
+    <header class="flex items-center justify-between px-4 py-2 border-b border-border-300 bg-bg-100">
+      <span class="text-text-100 text-sm">Theme polish ▾</span>
+      <button class="bg-fill-control text-text-200 rounded-md px-3 py-1 text-xs">Share</button>
+    </header>
+    <div class="fx-chat flex flex-col gap-6">
+      <div data-testid="user-message" class="self-end bg-bg-300 text-text-100 font-user-message rounded-xl px-4 py-2 max-w-[80%]">
+        Can you make the code blocks readable on true black?
+      </div>
+      <div class="font-claude-response text-text-100 standard-markdown prose leading-relaxed">
+        <p>Yes. Here is the token map, with <code class="bg-bg-300 rounded px-1 font-mono text-sm">--cds-page-bg</code> pinned to black and a <a href="#" class="underline">link to the docs</a>.</p>
+        <div class="rounded-lg border border-border-300 overflow-hidden my-3">
+          <div class="flex justify-between bg-bg-300 text-text-300 text-xs px-3 py-1 font-mono"><span>css</span><span>Copy</span></div>
+          <pre class="code-block__code bg-bg-000 p-3 text-sm font-mono"><code class="hljs language-css"><span class="hljs-comment">/* surfaces */</span>
+<span class="hljs-selector-tag">html</span> { <span class="hljs-attribute">--cds-page-bg</span>: <span class="hljs-number">#000</span>; }
+<span style="color:#c678dd">const</span> <span style="color:#61aeee">theme</span> = <span style="color:#98c379">"valkyrja"</span>; <span style="color:#5c6370;font-style:italic">// inline-style tokens (react-syntax-highlighter)</span>
+<span style="color:#d19a66">42</span> <span style="color:#e06c75">return</span> theme;</code></pre>
+        </div>
+        <div class="rounded-lg border border-border-300 bg-bg-200 text-text-300 text-sm px-3 py-2 my-3 font-ui">
+          ⚙ <b class="text-text-200">Used tool</b>: web_fetch claude.ai/login · <span class="text-success">done</span>
+        </div>
+        <ul><li>Surfaces black, elevation in tiny steps</li><li>Accent = one hue</li></ul>
+        <div role="alert" class="bg-danger-000 text-danger-000 rounded-md px-3 py-2 text-sm my-3" style="background:var(--cds-bg-danger);color:var(--cds-text-danger)">Error: message limit reached (danger token)</div>
+        <div role="status" class="rounded-md px-3 py-2 text-sm my-3" style="background:var(--cds-bg-warning);color:var(--cds-text-warning)">Warning: approaching usage limit (warning token)</div>
+      </div>
+    </div>
+    <div class="px-4 pb-4">
+      <div class="max-w-[760px] mx-auto bg-bg-000 border border-border-300 rounded-2xl p-3 shadow-sm" data-testid="composer">
+        <div contenteditable="true" class="text-text-100 min-h-[2.5rem] outline-none font-user-message">Reply to Claude…</div>
+        <div class="flex justify-between items-center mt-2">
+          <div class="flex gap-2"><button class="bg-fill-control text-text-300 rounded-md px-2 py-1 text-xs">+</button><button class="bg-fill-control text-text-300 rounded-md px-2 py-1 text-xs">Research</button></div>
+          <div class="flex gap-2 items-center"><span class="text-text-500 text-xs">Opus 5.5</span><button class="bg-fill-brand text-on-primary rounded-lg w-8 h-8">↑</button></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <aside class="fx-art bg-surface-panel border-l border-border-300 flex flex-col" aria-label="Artifact panel">
+    <div class="flex items-center justify-between px-4 py-2 border-b border-border-300">
+      <span class="text-text-100 text-sm">theme-preview.html</span>
+      <div class="flex gap-1"><button class="bg-fill-ghost-hover text-text-200 rounded px-2 text-xs">Code</button><button class="bg-fill-accent text-on-primary rounded px-2 text-xs">Preview</button></div>
+    </div>
+    <div class="p-4 flex flex-col gap-3 text-sm">
+      <div class="text-text-200">Settings</div>
+      <label class="flex justify-between text-text-100">Dark mode <span class="bg-fill-accent rounded-full w-9 h-5 inline-block"></span></label>
+      <label class="flex justify-between text-text-100">Artifacts <span class="bg-fill-control rounded-full w-9 h-5 inline-block"></span></label>
+      <input class="bg-fill-field border border-border-300 rounded-md px-2 py-1 text-text-100" value="Field text">
+      <div class="text-accent text-sm">Accent text (text-accent)</div>
+      <div class="text-muted text-xs">Muted text · secondary <span class="text-secondary">secondary</span></div>
+      <div role="menu" class="bg-surface-popover border border-border-300 rounded-lg p-2 shadow-md text-text-100">Popover / menu<br><span class="text-text-300">Rename</span><br><span class="text-danger">Delete</span></div>
+    </div>
+  </aside>
+</div>
+
+<div class="fx-modal bg-backdrop">
+  <div role="dialog" class="bg-surface-popover border border-border-300 rounded-2xl p-5 w-[360px] max-w-[90vw] shadow-lg">
+    <h2 class="font-display text-text-000 text-lg mb-2">Delete chat?</h2>
+    <p class="text-text-300 text-sm mb-4">This can't be undone.</p>
+    <div class="flex justify-end gap-2"><button class="bg-fill-control text-text-100 rounded-lg px-3 py-1 text-sm">Cancel</button><button class="bg-fill-danger text-on-primary rounded-lg px-3 py-1 text-sm" style="color:var(--cds-role-danger-on)">Delete</button></div>
+  </div>
+</div>
+<div class="fx-label">FIXTURE RENDER, not live claude.ai</div>
+</body>
+</html>

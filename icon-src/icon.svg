@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- r7: no facets on the arms (r5 hairline, r6 cap block both read as stray details).
+       Left arm 72% cyan, right arm solid cyan, ice crescent clear of both arms. Hand-built, no third-party marks. -->
+  <polygon points="2,8 16,8 34,54 28,61" fill="#4fe0ff" fill-opacity="0.72"/>
+  <polygon points="62,8 48,8 30,54 36,61" fill="#4fe0ff"/>
+  <polygon points="28,61 36,61 32,51" fill="#8fd3ff"/>
+  <polygon points="38,1 29,1 22,6 19,14 22,22 29,27 38,26 41,24 34,22 29,17 28,10 32,4" fill="#8fd3ff"/>
+</svg>

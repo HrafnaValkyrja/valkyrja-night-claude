@@ -1,0 +1,22 @@
+{
+  "name": "valkyrja-night-claude",
+  "version": "0.4.0",
+  "private": true,
+  "description": "Valkyrja Night for claude.ai (unofficial): a true-black restyle of claude.ai for Firefox",
+  "license": "MPL-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HrafnaValkyrja/valkyrja-night-claude"
+  },
+  "scripts": {
+    "lint": "web-ext lint -s ext",
+    "build": "web-ext build -s ext -a dist --overwrite-dest",
+    "fixture": "node tools/grab-css.mjs fixture/vendor",
+    "shots": "node tools/fixture-shots.mjs after",
+    "test": "web-ext lint -s ext && web-ext build -s ext -a dist --overwrite-dest && sh tools/audit-package.sh && node tools/grab-css.mjs fixture/vendor && node canary/fixture-check.mjs && node canary/canary.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.64.0",
+    "web-ext": "^10.7.0"
+  }
+}
